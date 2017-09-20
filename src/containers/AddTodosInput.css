@@ -1,0 +1,15 @@
+.AddTodosInput {
+ margin-bottom: 20px; 
+}
+
+.AddTodosInput input {
+  width: 75%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  float:left;
+}
+
+.AddTodosInput button {
+  width: 25%;
+  padding: 11px 10px;
+}
