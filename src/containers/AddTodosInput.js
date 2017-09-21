@@ -20,23 +20,33 @@ class AddTodosInput extends Component {
     let input = event.target.value
     let todo = { title: input }
 
-    setTimeout(function() {
-        this.setState({
-          todo: todo
-        })
-    }.bind(this), 200)
+    this.setState({
+      todo: todo
+    })
+  }
 
+  catchSubmitKeys(event) {
+    let enterKey = event.keyCode === 13
+
+    if (enterKey) {
+      this.submitAndClear()
+    }
+  }
+
+  submitAndClear() {
+    this.props.addTodo(this.state.todo)
+    document.getElementById('todos-textinput').value = ''
   }
 
   render() {
     return (
       <div className="AddTodosInput">
-        <input type="text" id="todos-textinput" placeholder="What do you want to do?" onChange={(event) => this.updateText(event)} />
-        <button onClick={() => this.props.addTodo(this.state.todo)}>
+        <input type="text" id="todos-textinput" placeholder="What do you want to do?" onChange={(event) => this.updateText(event)} onKeyDown={(event) => this.catchSubmitKeys(event)} />
+        <button onClick={() => this.submitAndClear()}>
           add to list
         </button>
       </div>
-    );
+    )
   }
 }
 
